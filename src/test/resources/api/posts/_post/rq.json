@@ -1,0 +1,8 @@
+[ 
+  {
+   "userId": 1,
+    "id": 1,
+     <#if title??>"title": "el post de pepito",</#if>
+    "body": "este es el post de pepito"
+  }
+]

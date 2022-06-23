@@ -1,0 +1,9 @@
+[
+  {
+     "postId":1,
+     "id":1,
+     "name":"pepito lopez",
+     <#if email??>"email":"{email}",</#if>
+     "body":"testeandooo un poco a ver si funciona esto"
+  }
+]
