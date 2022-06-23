@@ -15,7 +15,6 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
 public class PatchTodoMethod extends AbstractApiMethodV2 {
 	public PatchTodoMethod() {
-		super("api/todos/_patch/rq.json", "api/todos/_patch/rs.json", "api/todos/todo.properties");
 		replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
 	}
 }

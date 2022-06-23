@@ -15,7 +15,6 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 @SuccessfulHttpStatus(status = HttpResponseStatusType.CREATED_201)
 public class PostPostMethod extends AbstractApiMethodV2 {
 	public PostPostMethod() {
-		super("api/posts/_post/rq.json", "api/posts/_post/rs.json", "api/posts/post.properties");
 		replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
 	}
 }
