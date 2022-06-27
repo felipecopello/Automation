@@ -37,9 +37,9 @@ public class YahooHomePage extends AbstractPage {
 		acceptCookiesButton.click();
 	}
 
-	public MailLoginPage clickMailButton() {
+	public YahooMailLoginPage clickMailButton() {
 		mailButton.click();
-		return new MailLoginPage(driver);
+		return new YahooMailLoginPage(driver);
 	}
 
 	public void selectHeaderLink(String option) {

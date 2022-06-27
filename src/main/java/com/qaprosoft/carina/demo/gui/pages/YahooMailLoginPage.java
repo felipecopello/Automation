@@ -8,7 +8,7 @@ import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
-public class MailLoginPage extends AbstractPage {
+public class YahooMailLoginPage extends AbstractPage {
 
 	@FindBy(name = "username")
 	private ExtendedWebElement userNameInput;
@@ -16,7 +16,7 @@ public class MailLoginPage extends AbstractPage {
 	@FindBy(name = "signin")
 	private ExtendedWebElement nextButton;
 
-	public MailLoginPage(WebDriver driver) {
+	public YahooMailLoginPage(WebDriver driver) {
 		super(driver);
 		setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
 	}
