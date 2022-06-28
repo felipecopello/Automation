@@ -25,11 +25,11 @@ import org.testng.annotations.Test;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.demo.gui.components.FooterMenu;
 import com.qaprosoft.carina.demo.gui.components.compare.ModelSpecs;
 import com.qaprosoft.carina.demo.gui.components.compare.ModelSpecs.SpecType;
-import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
+import com.qaprosoft.carina.demo.gui.components.example.FooterMenu;
+import com.qaprosoft.carina.demo.gui.pages.example.CompareModelsPage;
+import com.qaprosoft.carina.demo.gui.pages.example.HomePage;
 
 /**
  * This sample shows how create Web test with dependent methods which shares existing driver between methods.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qaprosoft.carina.demo.gui.components;
+package com.qaprosoft.carina.demo.gui.components.example;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -21,25 +21,17 @@ import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.qaprosoft.carina.demo.gui.pages.ModelInfoPage;
 
-public class ModelItem extends AbstractUIObject {
-    @FindBy(xpath = ".//strong/span")
-    private ExtendedWebElement modelLabel;
+public class NewsItem extends AbstractUIObject {
 
-    @FindBy(xpath = ".//a")
-    private ExtendedWebElement modelLink;
-
-    public ModelItem(WebDriver driver, SearchContext searchContext) {
-        super(driver, searchContext);
+    @FindBy(xpath="./a")
+    public ExtendedWebElement titleLink;
+    
+    public NewsItem(WebDriver driver, SearchContext sc) {
+        super(driver, sc);
     }
-
-    public String readModel() {
-        return modelLabel.getText();
-    }
-
-    public ModelInfoPage openModelPage() {
-        modelLink.click();
-        return new ModelInfoPage(driver);
+    
+    public String readTitle() {
+        return titleLink.getElement().getText();
     }
 }

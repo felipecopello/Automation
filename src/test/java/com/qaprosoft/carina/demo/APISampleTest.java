@@ -35,16 +35,16 @@ import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.api.DeleteCommentMethod;
 import com.qaprosoft.carina.demo.api.DeletePostMethod;
-import com.qaprosoft.carina.demo.api.DeleteUserMethod;
 import com.qaprosoft.carina.demo.api.GetCommentsMethod;
 import com.qaprosoft.carina.demo.api.GetPostsMethod;
 import com.qaprosoft.carina.demo.api.GetTodosMethod;
-import com.qaprosoft.carina.demo.api.GetUserMethods;
 import com.qaprosoft.carina.demo.api.PatchTodoMethod;
 import com.qaprosoft.carina.demo.api.PostCommentMethod;
 import com.qaprosoft.carina.demo.api.PostPostMethod;
 import com.qaprosoft.carina.demo.api.PostTodoMethod;
-import com.qaprosoft.carina.demo.api.PostUserMethod;
+import com.qaprosoft.carina.demo.api.example.DeleteUserMethod;
+import com.qaprosoft.carina.demo.api.example.GetUserMethods;
+import com.qaprosoft.carina.demo.api.example.PostUserMethod;
 
 import io.restassured.response.Response;
 

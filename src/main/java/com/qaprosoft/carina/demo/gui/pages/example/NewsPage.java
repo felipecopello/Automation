@@ -13,29 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qaprosoft.carina.demo.gui.components;
+package com.qaprosoft.carina.demo.gui.pages.example;
 
-import org.openqa.selenium.SearchContext;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.qaprosoft.carina.demo.gui.components.example.NewsItem;
 
-public class WeValuePrivacyAd extends AbstractUIObject {
-	@FindBy(xpath = "//button[contains(@onclick, 'setAndSaveAllConsent')]")
-	private ExtendedWebElement okBtn;
-
-	public WeValuePrivacyAd(WebDriver driver, SearchContext searchContext) {
-		super(driver, searchContext);
-	}
-
-	public WeValuePrivacyAd(WebDriver driver) {
-		super(driver);
-	}
-
-	public void closeAdIfPresent() {
-		okBtn.clickIfPresent();
-	}
-
+public class NewsPage extends AbstractPage {
+    
+    @FindBy(className="searchFor")
+    private ExtendedWebElement searchTextField;
+    
+    @FindBy(xpath="//input[@value='Search']")
+    private ExtendedWebElement searchButton;
+    
+    @FindBy(xpath="//div[@class='news-item']")
+    private List<NewsItem> news;
+    
+    public NewsPage(WebDriver driver) {
+        super(driver);
+        setPageURL("/news.php3");
+    }
+    
+    public List<NewsItem> searchNews(String q) {
+        searchTextField.type(q);
+        searchButton.click();
+        return news;
+    }
+    
 }

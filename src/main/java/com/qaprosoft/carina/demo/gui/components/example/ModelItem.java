@@ -13,37 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qaprosoft.carina.demo.gui.pages;
+package com.qaprosoft.carina.demo.gui.components.example;
 
-import java.util.List;
-
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.components.NewsItem;
+import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.qaprosoft.carina.demo.gui.pages.example.ModelInfoPage;
 
-public class NewsPage extends AbstractPage {
-    
-    @FindBy(className="searchFor")
-    private ExtendedWebElement searchTextField;
-    
-    @FindBy(xpath="//input[@value='Search']")
-    private ExtendedWebElement searchButton;
-    
-    @FindBy(xpath="//div[@class='news-item']")
-    private List<NewsItem> news;
-    
-    public NewsPage(WebDriver driver) {
-        super(driver);
-        setPageURL("/news.php3");
+public class ModelItem extends AbstractUIObject {
+    @FindBy(xpath = ".//strong/span")
+    private ExtendedWebElement modelLabel;
+
+    @FindBy(xpath = ".//a")
+    private ExtendedWebElement modelLink;
+
+    public ModelItem(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
-    
-    public List<NewsItem> searchNews(String q) {
-        searchTextField.type(q);
-        searchButton.click();
-        return news;
+
+    public String readModel() {
+        return modelLabel.getText();
     }
-    
+
+    public ModelInfoPage openModelPage() {
+        modelLink.click();
+        return new ModelInfoPage(driver);
+    }
 }

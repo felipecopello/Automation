@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qaprosoft.carina.demo.api;
+package com.qaprosoft.carina.demo.api.example;
 
 import com.qaprosoft.carina.core.foundation.api.AbstractApiMethodV2;
 import com.qaprosoft.carina.core.foundation.api.annotation.Endpoint;
@@ -24,13 +24,13 @@ import com.qaprosoft.carina.core.foundation.api.http.HttpMethodType;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 
-@Endpoint(url = "${base_url}/users/1", methodType = HttpMethodType.DELETE)
-@RequestTemplatePath(path = "api/users/_delete/rq.json")
-@ResponseTemplatePath(path = "api/users/_delete/rs.json")
-@SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
-public class DeleteUserMethod extends AbstractApiMethodV2 {
+@Endpoint(url = "${base_url}/users", methodType = HttpMethodType.POST)
+@RequestTemplatePath(path = "api/users/_post/rq.json")
+@ResponseTemplatePath(path = "api/users/_post/rs.json")
+@SuccessfulHttpStatus(status = HttpResponseStatusType.CREATED_201)
+public class PostUserMethod extends AbstractApiMethodV2 {
 
-    public DeleteUserMethod() {
-        replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
-    }
+	public PostUserMethod() {
+		replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
+	}
 }
