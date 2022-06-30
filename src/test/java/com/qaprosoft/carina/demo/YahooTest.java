@@ -1,7 +1,7 @@
 package com.qaprosoft.carina.demo;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
@@ -27,59 +27,49 @@ public class YahooTest implements IAbstractTest {
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
-				"The element is not present");
-		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooSearchPage searchPage = homePage.openTrendingNews(newsNumber);
 		searchPage.assertPageOpened();
-		searchPage.getEraseSearchButton().assertElementPresent();
+		searchPage.assertEraseSearchButtonIsPresent();
 	}
 
 	@Test()
 	public void testWeatherPage() {
+		SoftAssert sofAssert = new SoftAssert();
 		YahooHomePage homePage = new YahooHomePage(getDriver());
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
-				"The element is not present");
-		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooWeatherPage yahooWeatherPage = homePage.openYahooWeatherPage();
 		yahooWeatherPage.assertPageOpened();
 
-		yahooWeatherPage.lookForWeatherInACity();
-
-		Assert.assertTrue(yahooWeatherPage.checkLocationH1());
+		sofAssert.assertTrue(yahooWeatherPage.checkLocationH1(), "Location h1 does not match the entered location");
 	}
 
 	@Test()
 	public void testMainNews() {
+		SoftAssert sofAssert = new SoftAssert();
 		YahooHomePage homePage = new YahooHomePage(getDriver());
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
-				"The element is not present");
-		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
-		homePage.getYahooHomeAdd().closeAdIfPresent();
+		homePage.closeYahooHomeAdIfPresent();
 
 		YahooNewsPage yahooNewsPage = homePage.openMainNews();
-		Assert.assertTrue(yahooNewsPage.isPageOpened(), "The page is not opened");
 
-		Assert.assertTrue(yahooNewsPage.titleMatchesRegExp());
+		yahooNewsPage.assertPageOpened();
+
+		sofAssert.assertTrue(yahooNewsPage.titleMatchesRegExp(), "The title does not match the regular expression.");
 	}
 
 	@Test()
 	public void testSearchPage() {
 		YahooHomePage homePage = new YahooHomePage(getDriver());
 		homePage.open();
+
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
-				"The element is not present");
-		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooSearchPage searchPage = homePage.openSpecifiedSearchPage();
 		searchPage.assertPageOpened();
@@ -87,7 +77,7 @@ public class YahooTest implements IAbstractTest {
 		YahooVideoSearchPage videoSearchPage = searchPage.openYahooVideoSearchPage();
 		videoSearchPage.assertPageOpened();
 
-		YoutubeVideoPage ytVideoPage = videoSearchPage.getSearchResultVideos().playVideo();
+		YoutubeVideoPage ytVideoPage = videoSearchPage.playSpecifiedVideo();
 		ytVideoPage.assertPageOpened();
 	}
 
@@ -97,9 +87,6 @@ public class YahooTest implements IAbstractTest {
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
-				"The element is not present");
-		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooLoginPage mlp = homePage.openLoginPage();
 		mlp.assertPageOpened();

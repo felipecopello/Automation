@@ -25,7 +25,9 @@ public class YahooVideoSearchPage extends AbstractPage {
 		setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
 	}
 
-	public YahooVideoItem getSearchResultVideos() {
-		return searchResultVideos.get(Integer.valueOf(R.TESTDATA.get("video_number")));
+	public YoutubeVideoPage playSpecifiedVideo() {
+		YahooVideoItem yahooVideoItem = searchResultVideos.get(Integer.valueOf(R.TESTDATA.get("video_number")));
+		YoutubeVideoPage youtubeVideoPage = yahooVideoItem.playVideo();
+		return youtubeVideoPage;
 	}
 }

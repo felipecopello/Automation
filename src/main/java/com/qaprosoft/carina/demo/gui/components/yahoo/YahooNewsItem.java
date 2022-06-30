@@ -29,7 +29,4 @@ public class YahooNewsItem extends AbstractUIObject {
 		return new YahooSearchPage(driver);
 	}
 
-	public ExtendedWebElement getNewsLink() {
-		return newsLink;
-	}
 }

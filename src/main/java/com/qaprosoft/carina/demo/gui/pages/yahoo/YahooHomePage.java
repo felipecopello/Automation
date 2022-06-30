@@ -28,7 +28,7 @@ public class YahooHomePage extends AbstractPage {
 	@FindBy(xpath = "//*[@name='crumb']/../a")
 	private ExtendedWebElement loginButton;
 
-	@FindBy(xpath = "//*[@id='applet_p_50000503']/div/div/div[2]/div/div/div")
+	@FindBy(css = "div.bd>div>div>div")
 	private List<YahooNewsItem> topMostLookedNewsLinks;
 
 	public YahooHomePage(WebDriver driver) {
@@ -40,28 +40,11 @@ public class YahooHomePage extends AbstractPage {
 		return acceptCookiesButton;
 	}
 
-	public ExtendedWebElement getViewMoreWeatherLink() {
-		return viewMoreWeatherLink;
-	}
-
-	public ExtendedWebElement getYahooSearchInput() {
-		return yahooSearchInput;
-	}
-
-	public ExtendedWebElement getMainNewsH2() {
-		return mainNewsH2;
-	}
-
-	public ExtendedWebElement getLoginButton() {
-		return loginButton;
-	}
-
-	public List<YahooNewsItem> getTopMostLookedNewsLinks() {
-		return topMostLookedNewsLinks;
-	}
-
 	public void acceptCookies() {
+		YahooHomePage yahooHomePage = new YahooHomePage(driver);
 		acceptCookiesButton.click();
+		acceptCookiesButton.isElementNotPresent(5);
+		yahooHomePage.assertPageOpened();
 	}
 
 	public YahooSearchPage openSpecifiedSearchPage() {
@@ -84,17 +67,15 @@ public class YahooHomePage extends AbstractPage {
 		return topMostLookedNewsLinks.get(newsRanking).openNewsPage();
 	}
 
+//	Use double click so the weather page opens every time. Otherwise random pop up might appear and page wont open.
 	public YahooWeatherPage openYahooWeatherPage() {
 		viewMoreWeatherLink.doubleClick();
 		return new YahooWeatherPage(driver);
 	}
 
-	public YahooHomeAdd getYahooHomeAdd() {
-		return new YahooHomeAdd(driver);
-	}
-
-	public void setAcceptCookiesButton(ExtendedWebElement acceptCookiesButton) {
-		this.acceptCookiesButton = acceptCookiesButton;
+	public void closeYahooHomeAdIfPresent() {
+		YahooHomeAdd yahooHomeAd = new YahooHomeAdd(driver);
+		yahooHomeAd.closeAdIfPresent();
 	}
 
 }

@@ -21,14 +21,6 @@ public class YahooLoginPage extends AbstractPage {
 		setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
 	}
 
-	public ExtendedWebElement getUserNameInput() {
-		return userNameInput;
-	}
-
-	public ExtendedWebElement getNextButton() {
-		return nextButton;
-	}
-
 	public YahooNotARobotLoginPage openNotARobotLoginPage(String username) {
 		userNameInput.type(username);
 		nextButton.click();

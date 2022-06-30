@@ -33,28 +33,13 @@ public class YahooWeatherPage extends AbstractPage {
 		setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
 	}
 
-	public ExtendedWebElement getLocationPickerButton() {
-		return locationPickerButton;
-	}
-
-	public ExtendedWebElement getLocationPickerInput() {
-		return locationPickerInput;
-	}
-
-	public ExtendedWebElement getLocationPickerOptionDiv() {
-		return locationPickerOptionButton;
-	}
-
 	public boolean checkLocationH1() {
-		LOGGER.info(locationH1.getText());
-		return locationH1.getText().equalsIgnoreCase(R.TESTDATA.get("city"));
-	}
-
-	public void lookForWeatherInACity() {
 		locationPickerButton.click();
 		enterLocationSearchWeather(R.TESTDATA.get("city"));
 		locationPickerOptionButton.click();
-		pause(5);
+		locationH1.assertElementWithTextPresent(R.TESTDATA.get("city"), 5);
+		LOGGER.info(locationH1.getText());
+		return locationH1.getText().equalsIgnoreCase(R.TESTDATA.get("city"));
 	}
 
 	public void enterLocationSearchWeather(String city) {

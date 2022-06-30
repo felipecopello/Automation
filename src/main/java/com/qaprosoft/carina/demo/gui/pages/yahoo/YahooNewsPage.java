@@ -24,7 +24,7 @@ public class YahooNewsPage extends AbstractPage {
 		setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
 	}
 
-	public String getNewsTitle() {
+	public String getNewsTitleText() {
 		String newsT = newsTitle.getText();
 		LOGGER.info(newsT);
 		return newsT;

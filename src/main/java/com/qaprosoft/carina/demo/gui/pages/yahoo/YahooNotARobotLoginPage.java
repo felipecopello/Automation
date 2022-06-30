@@ -17,11 +17,4 @@ public class YahooNotARobotLoginPage extends AbstractPage {
 		setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
 	}
 
-	public ExtendedWebElement getNotARobotH1() {
-		return yahooLogo;
-	}
-
-	public void setNotARobotH1(ExtendedWebElement notARobotH1) {
-		this.yahooLogo = notARobotH1;
-	}
 }

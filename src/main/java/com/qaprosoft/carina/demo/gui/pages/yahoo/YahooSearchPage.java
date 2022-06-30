@@ -26,12 +26,8 @@ public class YahooSearchPage extends AbstractPage {
 		return new YahooVideoSearchPage(driver);
 	}
 
-	public ExtendedWebElement getEraseSearchButton() {
-		return eraseSearchButton;
-	}
-
-	public ExtendedWebElement getVideosSearchResultLink() {
-		return videosSearchResultLink;
+	public void assertEraseSearchButtonIsPresent() {
+		eraseSearchButton.assertElementPresent();
 	}
 
 }
