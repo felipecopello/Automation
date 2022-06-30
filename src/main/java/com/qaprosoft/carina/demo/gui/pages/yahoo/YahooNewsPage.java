@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.PageOpeningStrategy;
 import com.qaprosoft.carina.core.gui.AbstractPage;
@@ -27,6 +28,10 @@ public class YahooNewsPage extends AbstractPage {
 		String newsT = newsTitle.getText();
 		LOGGER.info(newsT);
 		return newsT;
+	}
+
+	public boolean titleMatchesRegExp() {
+		return newsTitle.getText().matches(R.TESTDATA.get("title_reg_exp"));
 	}
 
 }

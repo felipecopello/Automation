@@ -27,11 +27,12 @@ public class YahooTest implements IAbstractTest {
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()));
+		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
+				"The element is not present");
 		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooSearchPage searchPage = homePage.openTrendingNews(newsNumber);
-		searchPage.isPageOpened();
+		searchPage.assertPageOpened();
 		searchPage.getEraseSearchButton().assertElementPresent();
 	}
 
@@ -41,11 +42,12 @@ public class YahooTest implements IAbstractTest {
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()));
+		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
+				"The element is not present");
 		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooWeatherPage yahooWeatherPage = homePage.openYahooWeatherPage();
-		yahooWeatherPage.isPageOpened();
+		yahooWeatherPage.assertPageOpened();
 
 		yahooWeatherPage.lookForWeatherInACity();
 
@@ -58,16 +60,16 @@ public class YahooTest implements IAbstractTest {
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()));
+		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
+				"The element is not present");
 		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		homePage.getYahooHomeAdd().closeAdIfPresent();
 
 		YahooNewsPage yahooNewsPage = homePage.openMainNews();
-		Assert.assertTrue(yahooNewsPage.isPageOpened());
+		Assert.assertTrue(yahooNewsPage.isPageOpened(), "The page is not opened");
 
-		String newsTitle = yahooNewsPage.getNewsTitle();
-		Assert.assertTrue(newsTitle.matches(".*"));
+		Assert.assertTrue(yahooNewsPage.titleMatchesRegExp());
 	}
 
 	@Test()
@@ -75,17 +77,18 @@ public class YahooTest implements IAbstractTest {
 		YahooHomePage homePage = new YahooHomePage(getDriver());
 		homePage.open();
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()));
+		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
+				"The element is not present");
 		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooSearchPage searchPage = homePage.openSpecifiedSearchPage();
-		searchPage.isPageOpened();
+		searchPage.assertPageOpened();
 
 		YahooVideoSearchPage videoSearchPage = searchPage.openYahooVideoSearchPage();
-		videoSearchPage.isPageOpened();
+		videoSearchPage.assertPageOpened();
 
-		YoutubeVideoPage ytVideoPage = videoSearchPage.getSearchResultVideos().get(0).playVideo();
-		ytVideoPage.isPageOpened();
+		YoutubeVideoPage ytVideoPage = videoSearchPage.getSearchResultVideos().playVideo();
+		ytVideoPage.assertPageOpened();
 	}
 
 	@Test()
@@ -94,14 +97,15 @@ public class YahooTest implements IAbstractTest {
 		homePage.open();
 
 		homePage.acceptCookies();
-		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()));
+		Assert.assertTrue(homePage.isElementNotPresent(homePage.getAcceptCookiesButton()),
+				"The element is not present");
 		Assert.assertTrue(homePage.isPageOpened(), "The page is not opened");
 
 		YahooLoginPage mlp = homePage.openLoginPage();
-		mlp.isPageOpened();
+		mlp.assertPageOpened();
 
 		YahooNotARobotLoginPage notARobotPage = mlp.openNotARobotLoginPage(StringGenerator.generateEmail());
-		notARobotPage.isPageOpened();
+		notARobotPage.assertPageOpened();
 	}
 
 }

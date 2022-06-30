@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.PageOpeningStrategy;
 import com.qaprosoft.carina.core.gui.AbstractPage;
@@ -24,7 +25,7 @@ public class YahooVideoSearchPage extends AbstractPage {
 		setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
 	}
 
-	public List<YahooVideoItem> getSearchResultVideos() {
-		return searchResultVideos;
+	public YahooVideoItem getSearchResultVideos() {
+		return searchResultVideos.get(Integer.valueOf(R.TESTDATA.get("video_number")));
 	}
 }
