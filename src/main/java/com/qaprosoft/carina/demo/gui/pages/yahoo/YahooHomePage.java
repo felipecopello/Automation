@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
@@ -13,6 +14,10 @@ import com.qaprosoft.carina.demo.gui.components.yahoo.YahooHomeAdd;
 import com.qaprosoft.carina.demo.gui.components.yahoo.YahooNewsItem;
 
 public class YahooHomePage extends AbstractPage {
+
+	@FindBy(linkText = "%s")
+	private ExtendedWebElement menuItem;
+
 	@FindBy(id = "ybar-sbq")
 	private ExtendedWebElement yahooSearchInput;
 
@@ -34,6 +39,11 @@ public class YahooHomePage extends AbstractPage {
 	public YahooHomePage(WebDriver driver) {
 		super(driver);
 		setPageURL("");
+	}
+
+	public void validateMenuItem(String menuName, String expectedUrl) {
+		menuItem.format(menuName).click();
+		Assert.assertEquals(getPageURL(), expectedUrl, "The urls do not match");
 	}
 
 	public ExtendedWebElement getAcceptCookiesButton() {

@@ -20,6 +20,18 @@ public class YahooTest implements IAbstractTest {
 
 	@Test(dataProvider = "DataProvider")
 	@TestRailCases(testCasesId = "1")
+	@XlsDataSourceParameters(path = "xls/yahooData.xlsx", sheet = "Sheet2", dsUid = "TUID", dsArgs = "linkText,expectedUrl", testRailColumn = "linkText")
+	public void testNavBarLinks(String linkText, String expectedUrl) {
+		YahooHomePage homePage = new YahooHomePage(getDriver());
+		homePage.open();
+
+		homePage.acceptCookies();
+
+		homePage.validateMenuItem(linkText, expectedUrl);
+	}
+
+	@Test(dataProvider = "DataProvider")
+	@TestRailCases(testCasesId = "1")
 	@XlsDataSourceParameters(path = "xls/yahooData.xlsx", sheet = "Sheet1", dsUid = "TUID", dsArgs = "a", testRailColumn = "a")
 	public void testTopNews(String a) {
 		int newsNumber = Integer.valueOf(a);
