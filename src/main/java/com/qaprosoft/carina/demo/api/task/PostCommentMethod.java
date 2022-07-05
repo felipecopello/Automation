@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.api;
+package com.qaprosoft.carina.demo.api.task;
 
 import com.qaprosoft.carina.core.foundation.api.AbstractApiMethodV2;
 import com.qaprosoft.carina.core.foundation.api.annotation.Endpoint;
@@ -9,12 +9,14 @@ import com.qaprosoft.carina.core.foundation.api.http.HttpMethodType;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 
-@Endpoint(url = "${base_url}/comments/1", methodType = HttpMethodType.DELETE)
-@RequestTemplatePath(path = "api/comments/_delete/rq.json")
-@ResponseTemplatePath(path = "api/comments/_delete/rs.json")
-@SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
-public class DeleteCommentMethod extends AbstractApiMethodV2 {
-	public DeleteCommentMethod() {
+@Endpoint(url = "${base_url}/comments", methodType = HttpMethodType.POST)
+@RequestTemplatePath(path = "api/comments/_post/rq.json")
+@ResponseTemplatePath(path = "api/comments/_post/rs.json")
+@SuccessfulHttpStatus(status = HttpResponseStatusType.CREATED_201)
+public class PostCommentMethod extends AbstractApiMethodV2 {
+
+	public PostCommentMethod() {
 		replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
 	}
+
 }

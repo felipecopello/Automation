@@ -33,18 +33,18 @@ import com.qaprosoft.carina.core.foundation.api.APIMethodPoller;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
-import com.qaprosoft.carina.demo.api.DeleteCommentMethod;
-import com.qaprosoft.carina.demo.api.DeletePostMethod;
-import com.qaprosoft.carina.demo.api.GetCommentsMethod;
-import com.qaprosoft.carina.demo.api.GetPostsMethod;
-import com.qaprosoft.carina.demo.api.GetTodosMethod;
-import com.qaprosoft.carina.demo.api.PatchTodoMethod;
-import com.qaprosoft.carina.demo.api.PostCommentMethod;
-import com.qaprosoft.carina.demo.api.PostPostMethod;
-import com.qaprosoft.carina.demo.api.PostTodoMethod;
 import com.qaprosoft.carina.demo.api.example.DeleteUserMethod;
 import com.qaprosoft.carina.demo.api.example.GetUserMethods;
 import com.qaprosoft.carina.demo.api.example.PostUserMethod;
+import com.qaprosoft.carina.demo.api.task.DeleteCommentMethod;
+import com.qaprosoft.carina.demo.api.task.DeletePostMethod;
+import com.qaprosoft.carina.demo.api.task.GetCommentsMethod;
+import com.qaprosoft.carina.demo.api.task.GetPostsMethod;
+import com.qaprosoft.carina.demo.api.task.GetTodosMethod;
+import com.qaprosoft.carina.demo.api.task.PatchTodoMethod;
+import com.qaprosoft.carina.demo.api.task.PostCommentMethod;
+import com.qaprosoft.carina.demo.api.task.PostPostMethod;
+import com.qaprosoft.carina.demo.api.task.PostTodoMethod;
 
 import io.restassured.response.Response;
 
